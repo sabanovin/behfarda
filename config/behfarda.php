@@ -2,5 +2,5 @@
 
 return [
     'merchant_id' => env('BEHFARDA_MERCHANT_ID', 'test'),
-    'redirect' => env('BEHFARDA_CALLBACK_URL', '/behfarda/callback'),
+    'callback_url' => env('BEHFARDA_CALLBACK_URL', '/behfarda/callback'),
 ];

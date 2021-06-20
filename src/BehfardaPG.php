@@ -9,11 +9,11 @@ class BehfardaPG
     public $token;
     public $amount;
     public $redirect;
-    public $factorNumber;
+    public $client_id;
     public $mobile;
     public $description;
-    public $paymentUrl;
-    public $validCardNumber;
+    public $payment_url;
+    public $valid_card_number;
 
     /**
      * send
@@ -24,10 +24,10 @@ class BehfardaPG
     public function send()
     {
         try {
-            $send = Behfarda::send($this->amount, $this->redirect, $this->factorNumber, $this->mobile, $this->description, $this->validCardNumber);
+            $send = Behfarda::send($this->amount, $this->redirect, $this->client_id, $this->mobile, $this->description, $this->valid_card_number);
 
             $this->token = $send['token'];
-            $this->paymentUrl = $send['payment_url'];
+            $this->payment_url = $send['payment_url'];
         } catch (Exceptions\SendException $e) {
             throw $e;
         }

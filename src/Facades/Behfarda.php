@@ -29,25 +29,24 @@ class Behfarda extends Facade
      *
      * @param $amount
      * @param $callback_url
-     * @param null $factorNumber
+     * @param null $client_id
      * @param null $mobile
      * @param null $description
      * @return mixed
      * @throws SendException
      */
-    public static function send($amount, $callback_url = null, $factorNumber = null, $mobile = null, $description = null, $api = null, $validCardNumber = null)
+    public static function send($amount, $callback_url = null, $client_id = null, $mobile = null, $description = null, $merchant_id = null, $valid_card_number = null)
     {
         $data = [
-            'merchant_id' => $api ? $api : config('behfarda.merchant_id'),
+            'merchant_id' => $merchant_id ? $merchant_id : config('behfarda.merchant_id'),
             'callback_url' => $callback_url ? $callback_url : url(config('behfarda.callback_url')),
             'amount' => $amount,
-            'factorNumber' => $factorNumber,
+            'client_id' => $client_id,
             'mobile' => $mobile,
             'description' => $description,
-            'resellerId' => '1000000012'
         ];
-        if ($validCardNumber) {
-            $data['validCardNumber'] = $validCardNumber;
+        if ($valid_card_number) {
+            $data['valid_card_number'] = $valid_card_number;
         }
         $send = Request::make('https://behfarda.com/payment/request', $data);
         if (isset($send['status']) && isset($send['response'])) {
@@ -78,7 +77,6 @@ class Behfarda extends Facade
         if (!isset($options['callback_url'])) {
             $options['callback_url'] = url(config('behfarda.callback_url'));
         }
-        $options['resellerId'] = '1000000012';
         $send = Request::make('https://behfarda.com/payment/request', $options);
         if (isset($send['status']) && isset($send['response'])) {
             if ($send['status'] == 200) {

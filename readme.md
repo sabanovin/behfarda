@@ -35,11 +35,11 @@ Set your api key and redirect url in `.env` file:
         public function pay()
         {
             $behfarda = new BehfardaPG();
-            $behfarda->amount = 1000; // Required, Amount
-            $behfarda->factorNumber = 'Factor-Number'; // Optional
+            $behfarda->amount = 100; // Required, Amount
+            $behfarda->client_id = 'Client-ID'; // Optional
             $behfarda->description = 'Some Description'; // Optional
             $behfarda->mobile = '0912XXXXXXX'; // Optional, If you want to show user's saved card numbers in gateway
-            $behfarda->validCardNumber = '6037990000000000'; // Optional, If you want to limit the payable card
+            $behfarda->valid_card_number = '6037990000000000'; // Optional, If you want to limit the payable card
     
             try {
                 $behfarda->send();
@@ -84,13 +84,13 @@ Config `aliases` in `config/app.php` :
 Alternatively, You can use `sendArray` method in facade to send optional data to Behfarda.com
 
     Behfarda::sendArray([
-      'amount' => 10000,
-      'callback_url' => 'Your-Redirect-Url', // optional
-      'factorNumber' => 'The-Factor-Number', // optional
-      'mobile' => 'Mobile-Number', // optional
       'merchant_id' => 'Merchant-ID', // optional, If you don't send this the package will read this from env
+      'amount' => 100,
+      'callback_url' => 'Your-Redirect-Url', // optional
+      'client_id' => 'Client-ID', // optional
+      'mobile' => 'Mobile-Number', // optional
       'description' => 'Your-Description', // optional
-      'validCardNumber' => 'Valid-Card-Number' // optional
+      'valid_card_number' => 'Valid-Card-Number' // optional
     ]);
 
 *Verify*
