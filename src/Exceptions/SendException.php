@@ -1,6 +1,6 @@
 <?php
 
-namespace Behfarda\Payment\Exceptions;
+namespace SabaNovin\Behfarda\Exceptions;
 
 use Exception;
 

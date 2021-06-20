@@ -34,7 +34,7 @@ Set your api key and redirect url in `.env` file:
     {
         public function pay()
         {
-            $behfarda = new BehFaradPG();
+            $behfarda = new BehfardaPG();
             $behfarda->amount = 1000; // Required, Amount
             $behfarda->factorNumber = 'Factor-Number'; // Optional
             $behfarda->description = 'Some Description'; // Optional
@@ -79,7 +79,7 @@ Config `aliases` in `config/app.php` :
 
     Behfarda::send($amount, $redirect = null, $factorNumber = null, $mobile = null, $description = null);
     
-*Send2*
+*SendArray*
 
 Alternatively, You can use `sendArray` method in facade to send optional data to Behfarda.com
 
