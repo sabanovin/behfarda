@@ -44,7 +44,7 @@ Set your api key and redirect url in `.env` file:
             try {
                 $behfarda->send();
     
-                return redirect($behfarda->paymentUrl);
+                return redirect($behfarda->payment_url);
             } catch (SendException $e) {
                 throw $e;
             }
